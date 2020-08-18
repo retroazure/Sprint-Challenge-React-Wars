@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import 'axios';
+import Character from './components/Character';
+
 
 const axios = require('axios');
 
@@ -20,10 +22,14 @@ const App = () => {
     })
   }, []);
 
-      
+
+  
   if(!characterList){
     return <h3>Loading...</h3>;
   }
+
+  const takeCharacters = characterList;
+
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -32,6 +38,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      <Character dataCharacter={takeCharacters}/>
     </div>
   );
 }
